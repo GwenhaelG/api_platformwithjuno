@@ -8,7 +8,8 @@ const pool = require ("./db");
 const app = express();
 
 // Accept cross-origin requests from the frontend app
-app.use(cors({ origin: 'https://platformwithjuno.com' }));
+//app.use(cors({ origin: 'https://platformwithjuno.com' }));
+app.use(cors({ origin: ['http://localhost:3000','https://platformwithjuno.com'] }));
 
 // Set up Auth0 configuration
 const authConfig = {
@@ -34,7 +35,6 @@ const checkJwt = jwt({
 // Define an endpoint that must be called with an access token
 app.get("/api/external", checkJwt, async (req, res) => {
   try {
-    console.log(req);
     const experiences = await pool.query("SELECT * FROM experiences");
     res.json(experiences.rows);
 /*     res.send({
