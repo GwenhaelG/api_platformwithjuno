@@ -48,7 +48,7 @@ app.get("/api/external", checkJwt, async (req, res) => {
 // Define an endpoint that can be called without an access token
 app.get("/api/external/unsecure", async (req, res) => {
   try {
-    const experiences = await pool.query("SELECT * FROM experiences");
+    //const experiences = await pool.query("SELECT * FROM experiences");
     //res.json(experiences.rows);
     res.send({
       msg: "Your Access Token was successfully validated!"
